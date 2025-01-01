@@ -27,14 +27,7 @@ typedef struct
   SimplexStatus status;
 } SimplexSolution;
 
-// T es la tabla del simplex
-// | -c 0 0 |
-// | A  I b |
-// n es el número de variables
-// m es el número de restricciones
-
-// e y l son las variables de entrada y salida respectivamente
-void pivot(double **T, int m, int n, int l, int e)
+void pivot(double **T, double *B, int m, int n, int l, int e)
 {
   int cols = n + m + 1;
   int rows = m + 1;
@@ -49,6 +42,7 @@ void pivot(double **T, int m, int n, int l, int e)
     for (int j = 0; j < cols; j++)
       T[i][j] -= T[l][j] * a_ie;
   }
+  B[l] = e;
 }
 
 double **build_table(StandardForm *S)
@@ -111,6 +105,10 @@ SimplexSolution *simplex(StandardForm *S)
   solution->x = x;
 
   double **T = build_table(S);
+  double *B = double_allocate_array(S->m);
+  for (int i = 0; i < S->m; i++)
+    B[i] = S->n + i;
+
   int e;
 
   while ((e = find_pivotColumn(T, S->m, S->n)) >= 0)
@@ -124,11 +122,16 @@ SimplexSolution *simplex(StandardForm *S)
       solution->status = UNBOUNDED;
       solution->z = INFINITY;
     }
-    pivot(T, S->m, S->n, l, e);
+    pivot(T, B, S->m, S->n, l, e);
   }
 
-  for (int i = 0; i < S->m; i++)
-    solution->x[i] = T[i][S->n + S->m];
+  for (int k = 0; k < S->m; k++)
+  {
+    int i = B[k];
+    if (i >= S->n)
+      continue;
+    solution->x[i] = T[k][S->m + S->n];
+  }
   solution->status = OPTIMAL;
   solution->z = T[S->m][S->n + S->m];
 }
