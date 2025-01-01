@@ -129,53 +129,29 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-src/simplex.o: src/simplex.c.o
-.PHONY : src/simplex.o
+main.o: main.c.o
+.PHONY : main.o
 
 # target to build an object file
-src/simplex.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/simplex.c.o
-.PHONY : src/simplex.c.o
+main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.o
+.PHONY : main.c.o
 
-src/simplex.i: src/simplex.c.i
-.PHONY : src/simplex.i
-
-# target to preprocess a source file
-src/simplex.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/simplex.c.i
-.PHONY : src/simplex.c.i
-
-src/simplex.s: src/simplex.c.s
-.PHONY : src/simplex.s
-
-# target to generate assembly for a file
-src/simplex.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/simplex.c.s
-.PHONY : src/simplex.c.s
-
-src/utils/vector.o: src/utils/vector.c.o
-.PHONY : src/utils/vector.o
-
-# target to build an object file
-src/utils/vector.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/vector.c.o
-.PHONY : src/utils/vector.c.o
-
-src/utils/vector.i: src/utils/vector.c.i
-.PHONY : src/utils/vector.i
+main.i: main.c.i
+.PHONY : main.i
 
 # target to preprocess a source file
-src/utils/vector.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/vector.c.i
-.PHONY : src/utils/vector.c.i
+main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.i
+.PHONY : main.c.i
 
-src/utils/vector.s: src/utils/vector.c.s
-.PHONY : src/utils/vector.s
+main.s: main.c.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-src/utils/vector.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/vector.c.s
-.PHONY : src/utils/vector.c.s
+main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
+.PHONY : main.c.s
 
 # Help Target
 help:
@@ -186,12 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
-	@echo "... src/simplex.o"
-	@echo "... src/simplex.i"
-	@echo "... src/simplex.s"
-	@echo "... src/utils/vector.o"
-	@echo "... src/utils/vector.i"
-	@echo "... src/utils/vector.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

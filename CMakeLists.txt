@@ -4,9 +4,12 @@ project(optimization C)
 set(CMAKE_C_STANDARD 11)
 
 set(SOURCES
-        src/utils/vector.c
-        src/utils/vector.h
+        src/allocation.c
+        src/allocation.h
+        src/optimization.h
         src/simplex.c
+        src/simplex.h
+
         main.c
         )
 

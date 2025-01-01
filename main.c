@@ -1,34 +1,35 @@
 #include <stdio.h>
 
-#include "src/utils/vector.h"
+#include "src/optimization.h"
 
 int main()
 {
-  Vector_i v;
-  initVector(&v, 0);
+  double c[3] = {3.0, 1.0, 2.0};
+  double b[3] = {30.0, 24.0, 36.0};
 
-  for (int i = 0; i < 40; i++)
+  double arr[3][3] = {
+      {1.0, 1.0, 3.0},
+      {2.0, 2.0, 5.0},
+      {4.0, 1.0, 2.0}};
+
+  double **A = (double **)malloc(3 * sizeof(double *));
+  for (int i = 0; i < 3; i++)
   {
-    pushBack(&v, i);
+    A[i] = (double *)malloc(3 * sizeof(double));
+    for (int j = 0; j < 3; j++)
+    {
+      A[i][j] = arr[i][j];
+    }
   }
 
-  for (int i = 0; i < v.size; i++)
-  {
-    printf("Element at index %d: %d\n", i, getElementAt(&v, i));
-  }
+  StandardForm S = {3, 3, A, b, c};
+  SimplexSolution *solution = simplex(&S);
 
-  for (int i = 0; i < 30; i++)
-  {
-    deleteAt(&v, 2);
-  }
-  printf("After delete:\n");
-  for (int i = 0; i < v.size; i++)
-  {
-    printf("Element at index %d: %d\n", i, getElementAt(&v, i));
-  }
-  printf("Size: %ld\n", v.size);
-  printf("Capacity: %ld\n", v.capacity);
-  freeVector(&v);
+  printf("Optimal solution:\n");
+  for (int i = 0; i < 3; i++)
+    printf("x[%d] = %f\n", i, solution->x[i]);
+
+  printf("Optimal value: %f\n", solution->z);
 
   return 0;
 }
