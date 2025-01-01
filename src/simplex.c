@@ -72,33 +72,36 @@ double **build_table(StandardForm *S)
 
 int find_pivotColumn(double **T, int m, int n)
 {
-  int e = 0;
+  int e = -1;
+  int min = 0.0;
   for (int j = 0; j < n + m; j++)
-    if (T[m][j] < T[m][e])
-      e = j;
-  if (T[m][e] >= 0)
-    return -1;
-  return e;
-}
-
-int find_pivotRow(double **T, int m, int n, int l)
-{
-  int e = 0;
-  double minRatio = DBL_MAX;
-  for (int i = 0; i < m; i++)
   {
-    if (T[i][l] <= 0)
-      continue;
-    double b_i = T[i][n + m];
-    double a_il = T[i][l];
-    double a_el = T[e][l];
-    if (minRatio > b_i / a_il)
+    if (T[m][j] < min)
     {
-      e = i;
-      minRatio = b_i / a_il;
+      min = T[m][j];
+      e = j;
     }
   }
   return e;
+}
+
+int find_pivotRow(double **T, int m, int n, int e)
+{
+  int l = -1;
+  double minRatio = DBL_MAX;
+  for (int i = 0; i < m; i++)
+  {
+    if (T[i][e] <= 0)
+      continue;
+    double b_i = T[i][n + m];
+    double a_il = T[i][e];
+    if (minRatio > b_i / a_il)
+    {
+      minRatio = b_i / a_il;
+      l = i;
+    }
+  }
+  return l;
 }
 
 SimplexSolution *simplex(StandardForm *S)
