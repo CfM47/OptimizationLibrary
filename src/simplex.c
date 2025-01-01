@@ -38,14 +38,16 @@ void pivot(double **T, int m, int n, int l, int e)
 {
   int cols = n + m + 1;
   int rows = m + 1;
+  double a_le = T[l][e];
   for (int i = 0; i < cols; i++)
-    T[l][i] /= T[l][e];
+    T[l][i] /= a_le;
   for (int i = 0; i < rows; i++)
   {
     if (i == l)
       continue;
+    double a_ie = T[i][e];
     for (int j = 0; j < cols; j++)
-      T[i][j] -= T[l][j] * T[i][e];
+      T[i][j] -= T[l][j] * a_ie;
   }
 }
 
@@ -122,8 +124,8 @@ SimplexSolution *simplex(StandardForm *S)
     pivot(T, S->m, S->n, l, e);
   }
 
-  for (int i = 1; i <= S->m; i++)
+  for (int i = 0; i < S->m; i++)
     solution->x[i] = T[i][S->n + S->m];
   solution->status = OPTIMAL;
-  solution->z = -T[S->m][S->n + S->m];
+  solution->z = T[S->m][S->n + S->m];
 }
