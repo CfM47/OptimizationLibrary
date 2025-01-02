@@ -28,10 +28,6 @@ typedef struct
   SimplexStatus status;
 } SimplexSolution;
 
-void pivot(double **T, int m, int n, int l, int e);
-double **build_table(StandardForm *S);
-int find_pivotColumn(double **T, int m, int n);
-int find_pivotRow(double **T, int m, int n, int l);
 SimplexSolution *simplex(StandardForm *S);
 
 #endif // SIMPLEX_H
