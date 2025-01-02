@@ -3,29 +3,7 @@
 #include <float.h>
 #include <math.h>
 
-#include "allocation.h"
-
-typedef struct
-{
-  int m, n;
-  double **A;
-  double *b;
-  double *c;
-} StandardForm;
-
-typedef enum
-{
-  OPTIMAL,
-  UNBOUNDED,
-  INFEASIBLE
-} SimplexStatus;
-
-typedef struct
-{
-  double *x;
-  double z;
-  SimplexStatus status;
-} SimplexSolution;
+#include "optimization.h"
 
 void pivot(double **T, double *B, int m, int n, int l, int e)
 {

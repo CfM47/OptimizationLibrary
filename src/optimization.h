@@ -2,6 +2,7 @@
 #define OPTIMIZATION_H
 
 #include "allocation.h"
-#include "simplex.h"
+#include "simplex/simplex.h"
+#include "simplex/tests.h"
 
 #endif // OPTIMIZATION_H

@@ -7,8 +7,11 @@ set(SOURCES
         src/allocation.c
         src/allocation.h
         src/optimization.h
-        src/simplex.c
-        src/simplex.h
+        src/simplex/simplex.c
+        src/simplex/simplex.h
+        src/simplex/tests.c
+        src/simplex/tests.h
+        
 
         main.c
         )
