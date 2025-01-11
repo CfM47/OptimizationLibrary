@@ -11,7 +11,9 @@ set(SOURCES
         src/simplex/simplex.h
         src/simplex/tests.c
         src/simplex/tests.h
-        
+
+        src/plu/plu.c
+        src/plu/plu.h       
 
         main.c
         )

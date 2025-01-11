@@ -88,3 +88,17 @@ void double_copy_matrix(double **dest, double **src, size_t rows, size_t cols)
     memcpy(dest[i], src[i], cols * sizeof(double));
   }
 }
+
+void int_swap(int *a, int *b)
+{
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+void double_swap(double *a, double *b)
+{
+  double temp = *a;
+  *a = *b;
+  *b = temp;
+}

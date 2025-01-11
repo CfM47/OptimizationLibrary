@@ -13,5 +13,7 @@ void int_copy_array(int *dest, const int *src, size_t size);
 void double_copy_array(double *dest, const double *src, size_t size);
 void int_copy_matrix(int **dest, int **src, size_t rows, size_t cols);
 void double_copy_matrix(double **dest, double **src, size_t rows, size_t cols);
+void int_swap(int *a, int *b);
+void double_swap(double *a, double *b);
 
 #endif // ALLOCATION_H

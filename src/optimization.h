@@ -4,5 +4,6 @@
 #include "allocation.h"
 #include "simplex/simplex.h"
 #include "simplex/tests.h"
+#include "plu/plu.h"
 
 #endif // OPTIMIZATION_H
