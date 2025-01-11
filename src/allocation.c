@@ -38,3 +38,53 @@ double **double_allocate_matrix(size_t rows, size_t cols)
   }
   return matrix;
 }
+
+void int_free_matrix(int **matrix, size_t rows)
+{
+  if (matrix)
+  {
+    for (size_t i = 0; i < rows; ++i)
+    {
+      free(matrix[i]);
+    }
+    free(matrix);
+  }
+}
+
+void double_free_matrix(double **matrix, size_t rows)
+{
+  if (matrix)
+  {
+    for (size_t i = 0; i < rows; ++i)
+    {
+      free(matrix[i]);
+    }
+    free(matrix);
+  }
+}
+
+void int_copy_array(int *dest, const int *src, size_t size)
+{
+  memcpy(dest, src, size * sizeof(int));
+}
+
+void double_copy_array(double *dest, const double *src, size_t size)
+{
+  memcpy(dest, src, size * sizeof(double));
+}
+
+void int_copy_matrix(int **dest, int **src, size_t rows, size_t cols)
+{
+  for (size_t i = 0; i < rows; ++i)
+  {
+    memcpy(dest[i], src[i], cols * sizeof(int));
+  }
+}
+
+void double_copy_matrix(double **dest, double **src, size_t rows, size_t cols)
+{
+  for (size_t i = 0; i < rows; ++i)
+  {
+    memcpy(dest[i], src[i], cols * sizeof(double));
+  }
+}
