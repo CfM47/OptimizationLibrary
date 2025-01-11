@@ -5,5 +5,6 @@
 #include "simplex/simplex.h"
 #include "simplex/tests.h"
 #include "plu/plu.h"
+#include "linearRegression/linearRegression.h"
 
 #endif // OPTIMIZATION_H

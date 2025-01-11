@@ -7,6 +7,7 @@ set(SOURCES
         src/allocation.c
         src/allocation.h
         src/optimization.h
+
         src/simplex/simplex.c
         src/simplex/simplex.h
         src/simplex/tests.c
@@ -15,6 +16,9 @@ set(SOURCES
         src/plu/plu.c
         src/plu/plu.h       
 
+        src/linearRegression/linearRegression.c
+        src/linearRegression/linearRegression.h
+        
         main.c
         )
 
